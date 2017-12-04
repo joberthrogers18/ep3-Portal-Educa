@@ -1,6 +1,6 @@
 <h1><%= @article.title %></h1>
 <p>
-  Tags:
+  Categorias:
   <% @article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
@@ -12,13 +12,20 @@
 </p>
 
 <p><%= @article.body %></p>
-<%= link_to "<< Back to Articles List", articles_path %>
-<%= render partial: 'comments/form' %>
+<%= link_to "<< Retornar ", articles_path %>
 <p>
 <% if user_signed_in? %>
-<%= link_to "delete", article_path(@article), method: :delete,data: {confirm: "Really delete the article?"}%>
-<%= link_to "edit", edit_article_path(@article) %>
+<%= render partial: 'comments/form' %>
+<% else %>
+É necessário estar logado para comentar
 <% end %>
 </p>
-<h3>Comments (<%= @article.comments.size %>)</h3>
+<p>
+<% if user_signed_in? %>
+<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
+<%= link_to "Editar", edit_article_path(@article) %>
+<% end %>
+</p>
+
+<h3>Comentários (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments.reverse %>

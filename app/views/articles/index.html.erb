@@ -1,4 +1,4 @@
-<h1>All Articles</h1>
+<h1>Todos os artigos</h1>
 
 <ul id="articles">
   <% @article.each do |article| %>
@@ -12,6 +12,6 @@
 
 <p>
 <% if user_signed_in? %>
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<%= link_to "Novo artigo", new_article_path, class: "new_article" %>
 <% end %>
 </p>
