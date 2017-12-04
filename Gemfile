@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #A partir daqui são extras do blog
 gem 'paperclip'
 gem 'devise'
+gem 'rails_admin', '~> 1.2'
+
