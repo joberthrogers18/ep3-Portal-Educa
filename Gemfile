@@ -56,4 +56,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #A partir daqui são extras do blog
 gem 'paperclip'
-gem 'sorcery'
+gem 'devise'
