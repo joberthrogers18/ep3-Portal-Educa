@@ -9,5 +9,9 @@
   <% end %>
 </ul>
 
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
 
+<p>
+<% if user_signed_in? %>
+<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<% end %>
+</p>
