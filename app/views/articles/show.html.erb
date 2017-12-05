@@ -1,4 +1,5 @@
 <h1><%= @article.title %></h1>
+Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.author %>
 <p>
   Categorias:
   <% @article.tags.each do |tag| %>
@@ -10,7 +11,6 @@
 <%= image_tag @article.image.url %>
 <% end %>
 </p>
-
 <p><%= @article.body %></p>
 <%= link_to "<< Retornar ", articles_path %>
 <p>
