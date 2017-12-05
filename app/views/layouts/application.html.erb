@@ -11,7 +11,7 @@
   <body>
 <p class="navbar-text pull-right">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
+          Logged in as <strong><%= current_user.username %></strong>.
           <% if current_user.admin? %>
             <%= link_to 'Admin panel', rails_admin_path, :class => 'navbar-link' %> 
             <% end %>
