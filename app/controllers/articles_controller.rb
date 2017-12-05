@@ -14,8 +14,8 @@ include ArticlesHelper
     end
     def create
         @article = Article.new(article_params)
-        @article.author = current_user.username
-  @article.save
+        @article.autor = current_user.username
+        @article.save
 flash.notice = "Article '#{@article.title}' created!"
   redirect_to article_path(@article)
     end

@@ -1,5 +1,5 @@
 <h1><%= @article.title %></h1>
-Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.author %>
+Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.autor %>
 <p>
   Categorias:
   <% @article.tags.each do |tag| %>
