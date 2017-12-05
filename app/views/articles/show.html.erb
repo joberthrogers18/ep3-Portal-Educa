@@ -1,3 +1,11 @@
+<%= link_to "<< Retornar ", articles_path, :class=>"waves-effect waves-light btn" %> <br \><br \><br \>
+<p>
+<% if user_signed_in? %>
+<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}, :class=>"waves-effect waves-light btn"  %>
+<%= link_to "Editar", edit_article_path(@article), :class=>"waves-effect waves-light btn"  %>
+<% end %>
+</p>
+
 <h1><%= @article.title %></h1>
 <p>
 
@@ -14,18 +22,13 @@
 </p>
 
 <p><%= @article.body %></p>
-<%= link_to "<< Retornar ", articles_path %>
+
 <p>
+
 <% if user_signed_in? %>
 <%= render partial: 'comments/form' %>
 <% else %>
 É necessário estar logado para comentar
-<% end %>
-</p>
-<p>
-<% if user_signed_in? %>
-<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
-<%= link_to "Editar", edit_article_path(@article) %>
 <% end %>
 </p>
 
