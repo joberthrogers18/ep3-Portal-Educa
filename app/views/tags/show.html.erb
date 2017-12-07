@@ -4,9 +4,9 @@
 <ul>
   <% @tag.articles.each do |article| %>
     <li><%= link_to article.title, article_path(article) %></li>
-<%= link_to "<< Retornar", tags_path %>
-<%= link_to "Excluir", tag_path(@tag), method: :delete,data: {confirm: "Realmente deseja excluir essa categoria?"}%>
 
   <% end %>
 
 </ul>
+<%= link_to "<< Retornar", tags_path %>
+<%= link_to "Excluir", tag_path(@tag), method: :delete,data: {confirm: "Realmente deseja excluir essa categoria?"}%>
