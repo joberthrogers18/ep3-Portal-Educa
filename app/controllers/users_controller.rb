@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   end
 def show
-            @article = Article.find_by_author(params[:id])
-
+    @article = Article.new
   @user = User.find_by_username(params[:id])
 
 end

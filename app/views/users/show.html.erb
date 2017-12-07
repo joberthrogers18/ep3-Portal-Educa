@@ -4,6 +4,14 @@ Nome: <%= @user.username %><br/>
 Email:  <%= @user.email %><br/>
 Telefone: (em breve)<br/>
 
+<ul>
+  <% @user.articles.each do |article| %>
 
+    <li><%= link_to article.title, article_path(article) %></li>
+
+
+  <% end %>
+
+</ul>
 
 <p><%= link_to "<< Retornar para todos usuários:", users_path %></p>
