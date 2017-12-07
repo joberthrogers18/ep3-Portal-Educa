@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205230302) do
+ActiveRecord::Schema.define(version: 20171207215743) do
 
 # Could not dump table "articles" because of following StandardError
 #   Unknown type 'String' for column 'autor'
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20171205230302) do
     t.boolean "admin", default: false
     t.boolean "professor", default: false
     t.string "username"
+    t.string "name"
+    t.datetime "date_of_birth"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
