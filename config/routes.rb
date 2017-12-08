@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categoria
   resources :sobres
   get 'users/index'
 

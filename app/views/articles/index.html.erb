@@ -3,11 +3,11 @@
 
 <br /><br />
 
-<p class="center">
+
 <% if user_signed_in? %>
-<%= link_to "Novo artigo", new_article_path, class: "new_article", :class=>"waves-effect waves-light btn" %>
+<p class="center"><%= link_to "Novo artigo", new_article_path, class: "new_article", :class=>"waves-effect waves-light btn" %></p>
 <% end %>
-</p>
+
 
 <br /><br />
 
@@ -15,10 +15,6 @@
 
           <table>
             <thead>
-                  <tr>
-                      <th>Artigo</th>
-                      <th>categoria</th>
-                  </tr>
               </thead>
 
               <tbody>
@@ -29,9 +25,9 @@
                 </tbody>
             <table>
 
-            <li>
+            <li class="center"><font size="5">
               <%= link_to article.title, article_path(article),
             class: 'article_title', id: "article_#{article.id}" %>
-            </li>
+            </font></li>
           <% end %>
         </ul>

@@ -19,6 +19,7 @@
             <ul class="right hide-on-med-and-down">
 
             <%= link_to 'Sobre', sobres_path, :class => 'waves-effect waves-light btn'%>
+            <%= link_to 'Categorias', categoria_path, :class => 'waves-effect waves-light btn'%>
 
             <% @users = User.all %>
             <p><% @users.each do |user| %></p>
