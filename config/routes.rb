@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sobres
   get 'users/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

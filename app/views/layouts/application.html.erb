@@ -15,8 +15,10 @@
 
 
           <div class="nav-wrapper light-blue">
-            <a href="#!" class="brand-logo">PORTAL EDUCA</a>
+            <a href="http://localhost:3000/articles" class="brand-logo" >PORTAL EDUCA</a>
             <ul class="right hide-on-med-and-down">
+
+            <%= link_to 'Sobre', sobres_path, :class => 'waves-effect waves-light btn'%>
 
             <% @users = User.all %>
             <p><% @users.each do |user| %></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207215743) do
+ActiveRecord::Schema.define(version: 20171208043514) do
 
 # Could not dump table "articles" because of following StandardError
 #   Unknown type 'String' for column 'autor'
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20171207215743) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
+  create_table "sobres", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
