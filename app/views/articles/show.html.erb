@@ -25,12 +25,9 @@ Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.aut
 
 <p>
 <% if user_signed_in? %>
-            <%= render partial: 'comments/form' %>
+            <%= render partial: 'comments/form' %></br></br>
             <% if current_user.username == @article.autor or current_user.admin? %>
-            <%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
-            <%= link_to "Editar", edit_article_path(@article) %>
             <h3>Postar comentário</h3>
-            <%= render partial: 'comments/form' %>
 <% else %>
 É necessário estar logado para comentar
             <% end %>

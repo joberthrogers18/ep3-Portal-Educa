@@ -10,28 +10,31 @@
   </head>
 
  <body>
-
    <nav>
-
 
           <div class="nav-wrapper light-blue">
             <a href="http://localhost:3000/articles" class="brand-logo" >PORTAL EDUCA</a>
             <ul class="right hide-on-med-and-down">
 
+
             <%= link_to 'Sobre', sobres_path, :class => 'waves-effect waves-light btn'%>
             <%= link_to 'Categorias', categoria_path, :class => 'waves-effect waves-light btn'%>
+            <% if user_signed_in? %>
+              <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light btn'  %><% end %>
+            <% if user_signed_in? == false %>
+              <%= link_to "Cadastrar-se", new_user_registration_path, :class => 'waves-effect waves-light btn'  %> |
+              <%= link_to "Entrar", new_user_session_path, :class => 'waves-effect waves-light btn'  %> <% end %>
 
             <% @users = User.all %>
-            <p><% @users.each do |user| %></p>
+            <% @users.each do |user| %>
 
         <% if user_signed_in? %>
           <% if current_user.username == user.username %>
-          Logado como: <%= link_to user.username, user_path(user.username) %> |
+             <li><a><%= link_to user.username, user_path(user.username), :class => 'waves-effect waves-light btn' %> </a></li>
+          <% end %>
           <% if current_user.admin? %>
             <%= link_to 'Admin panel', rails_admin_path, :class => 'waves-effect waves-light btn'%>
             <% end %>
-
-          <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light btn'  %><% end %>
         <% else %>
 
         <% end %>
@@ -43,9 +46,6 @@
 
         <div class="container">
          <p class="navbar-text pull-right">
-        <% if user_signed_in? == false %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'waves-effect waves-light btn'  %> |
-                  <%= link_to "Login", new_user_session_path, :class => 'waves-effect waves-light btn'  %> <% end %>
                   </p>
             <%= yield %>
         <p class="flash"><%= flash.notice %></p>
