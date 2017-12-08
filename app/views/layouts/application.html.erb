@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+          <title>Portal Educa</title>
+          <%= csrf_meta_tags %>
 
-  <body>
-<p class="navbar-text pull-right">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.username %></strong>.
-          <% if current_user.admin? %>
-            <%= link_to 'Admin panel', rails_admin_path, :class => 'navbar-link' %> 
+          <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        </head>
+
+        <body>
+
+
+          <nav>
+          <div class="nav-wrapper light-blue">
+            <a href="#!" class="brand-logo">PORTAL EDUCA</a>
+            <ul class="right hide-on-med-and-down">
+
+            <% if user_signed_in? %>
+              Logged in as <strong><%= current_user.email %></strong>.
+              <% if current_user.admin? %>
+                <%= link_to 'Admin panel', rails_admin_path, :class => 'waves-effect waves-light btn'%>
+                <% end %>
+              <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'waves-effect waves-light btn' %>
+              <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light btn'  %>
+            <% else %>
+              <%= link_to "Cadastra-se", new_user_registration_path, :class => 'waves-effect waves-light btn'  %>
+
+              <%= link_to "Entrar", new_user_session_path, :class => 'waves-effect waves-light btn'  %>
+
             <% end %>
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-        <% end %>
-      </p>
-    <%= yield %>
-<p class="flash"><%= flash.notice %></p>
-  </body>
+                </ul>
+          </div>
+        </nav>
+
+          <div class="container">
+                <p class="navbar-text pull-right">
+
+                      </p>
+                    <%= yield %>
+                <p class="flash"><%= flash.notice %></p>
+          </div>
+        </body>
+
 </html>

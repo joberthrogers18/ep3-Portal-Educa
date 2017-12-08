@@ -2,9 +2,9 @@
 
   <p>
     <%= f.label :corpo %><br/>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :rows => 10, style: 'width:10px;',style: 'height:400px;' %>
   </p>
   <p>
-    <%= f.submit 'Enviar' %>
+    <%= f.submit 'Enviar', :class=>"waves-effect waves-light btn" %>
   </p>
-<% end %>   
+<% end %>

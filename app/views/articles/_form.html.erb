@@ -1,3 +1,4 @@
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <%= form_for(@article, html: {multipart: true}) do |f| %>
   <ul>
   <% @article.errors.full_messages.each do |error| %>
@@ -6,14 +7,19 @@
   </ul>
   <p>
     <%= f.label :Título %><br />
-    <%= f.text_field :title %>
+    <div  ><%= f.text_field :title %></div>
+
   </p>
   <p>
-    <%= f.label :Corpo %><br />
-    <%= f.text_area :body %>
+    <%= f.label :Categoria %><br />
+    <%= f.text_field :tag_list %>
   </p>
   <p>
-    <%= f.submit "Enviar" %>
+    <div><%= f.label :Corpo %></div><br />
+    <div ><%= f.text_area :body , :rows => 10, style: 'width:10px;',style: 'height:400px;' %></div>
+  </p>
+  <p>
+    <%= f.submit "Enviar", :class=>"waves-effect waves-light btn" %>
   </p>
 <p>
   <% if @article.image.exists? %>
@@ -21,9 +27,5 @@
   <% end %>
   <%= f.label :image, "Anexar imagem" %><br />
   <%= f.file_field :image %>
-</p>
-<p>
-  <%= f.label :Categoria %><br />
-  <%= f.text_field :tag_list %>
 </p>
 <% end %>

@@ -1,7 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= link_to "voltar", :back,:class =>'waves-effect waves-light btn'  %>
+
+<br /><br /><h2 class="center">Editar <%= resource_name.to_s.humanize %></h2><br /><br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
+  <div class="container">
+          <!-- Page Content goes here -->
 
   <div class="field">
     <p><%= f.label :username %><br />
@@ -15,7 +20,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :Senha %> <i>(deixe em branco caso não queira mudar)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
@@ -24,22 +29,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :confirmar_senha %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :Senha_atual %> <i> ( precisamos de sua atual para confirmar as mudanças )</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Atualizar", :class => 'waves-effect waves-light btn' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<br /><br /><h3 class="center">Cancelar Conta</h3><br /><br />
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Infeliz? <%= button_to "Excluir conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete,:class =>'waves-effect waves-light btn'  %></p>
 
-<%= link_to "Back", :back %>
+    </div>

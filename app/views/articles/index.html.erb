@@ -1,17 +1,37 @@
-<h1>Todos os artigos</h1>
 
-<ul id="articles">
-  <% @article.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article),
-    class: 'article_title', id: "article_#{article.id}" %>
-    </li>
-  <% end %>
-</ul>
+<h1 class=center>Todos os artigos</h1>
 
+<br /><br />
 
-<p>
+<p class="center">
 <% if user_signed_in? %>
-<%= link_to "Novo artigo", new_article_path, class: "new_article" %>
+<%= link_to "Novo artigo", new_article_path, class: "new_article", :class=>"waves-effect waves-light btn" %>
 <% end %>
 </p>
+
+<br /><br />
+
+        <ul id="articles">
+
+          <table>
+            <thead>
+                  <tr>
+                      <th>Artigo</th>
+                      <th>categoria</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+
+                  <td><% @article.each do |article| %></td>
+              </tr>
+                </tbody>
+            <table>
+
+            <li>
+              <%= link_to article.title, article_path(article),
+            class: 'article_title', id: "article_#{article.id}" %>
+            </li>
+          <% end %>
+        </ul>

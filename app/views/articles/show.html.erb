@@ -1,10 +1,20 @@
+<%= link_to "<< Retornar ", articles_path, :class=>"waves-effect waves-light btn" %> <br \><br \><br \>
+<p>
+<% if user_signed_in? %>
+<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}, :class=>"waves-effect waves-light btn"  %>
+<%= link_to "Editar", edit_article_path(@article), :class=>"waves-effect waves-light btn"  %>
+<% end %>
+</p>
+
 <h1><%= @article.title %></h1>
 Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.autor %>
 <p>
-  Categorias:
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
+
+        Categorias:
+        <% @article.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag) %>
+        <% end %>
+
 </p>
 <p>
  <% if @article.image.exists? %>
@@ -12,23 +22,21 @@ Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.aut
 <% end %>
 </p>
 <p><%= @article.body %></p>
-<%= link_to "<< Retornar ", articles_path %>
+
 <p>
 <% if user_signed_in? %>
-<h3>Postar comentário</h3>
-<%= render partial: 'comments/form' %>
+            <%= render partial: 'comments/form' %>
+            <% if current_user.username == @article.autor or current_user.admin? %>
+            <%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
+            <%= link_to "Editar", edit_article_path(@article) %>
+            <h3>Postar comentário</h3>
+            <%= render partial: 'comments/form' %>
 <% else %>
 É necessário estar logado para comentar
+            <% end %>
 <% end %>
 </p>
-<p>
-<% if user_signed_in? %>
-<% if current_user.username == @article.autor or current_user.admin? %>
-<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
-<%= link_to "Editar", edit_article_path(@article) %>
-<% end %>
-<% end %>
-</p>
+
 
 <h3>Comentários (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments.reverse %>
