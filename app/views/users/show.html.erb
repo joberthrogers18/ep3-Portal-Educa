@@ -18,8 +18,6 @@ Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %
 
 
 <p><% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %><% end %></p>
-<ul>
 
-</ul>
 
 <p><%= link_to "<< Retornar para todos usuários:", users_path %></p>
