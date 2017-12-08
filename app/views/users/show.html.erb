@@ -4,19 +4,21 @@ Nome: <%= @user.name %><br/>
 Email:  <%= @user.email %><br/>
 Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><% end %>
 
-<h3>Artigos criados pelo usuário:</h3>
 <% @article = Article.all %>
+
+
+<h3>Artigos criados pelo usuário:</h3>
 <% @article.each do |article| %>
-    <% if current_user.username == article.autor %>
+<% if @user.username == article.autor %>
     <ul><li><%= link_to article.title, article_path(article),
     class: 'article_title', id: "article_#{article.id}" %>
     </li>
-  <% end %><% end %>
-</ul>
+  <% end %></ul>
+<% end %>
+
 
 <p><% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %><% end %></p>
 <ul>
-
 
 </ul>
 
