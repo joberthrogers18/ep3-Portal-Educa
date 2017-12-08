@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-has_many :articles
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,5 +23,7 @@ has_many :articles
         if User.where(email: username).exists?
      errors.add(:username, :invalid)
     end
+
 end
+has_many :articles, foreign_key: :author_id
 end
