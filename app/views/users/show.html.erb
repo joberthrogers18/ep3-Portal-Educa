@@ -1,5 +1,5 @@
 <h1><%= @user.username %></h1>
-
+<p><%= image_tag(@user.avatar.url(:thumb)) %></p>
 Nome: <%= @user.name %><br/>
 Email:  <%= @user.email %><br/>
 Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><% end %>

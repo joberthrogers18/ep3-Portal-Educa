@@ -10,17 +10,18 @@
     <div  ><%= f.text_field :title %></div>
 
   </p>
+<p>
+  <%= f.label :Categoria %><br />
+  <%= f.text_field :tag_list %>
+</p>
   <p>
-    <%= f.label :Categoria %><br />
-    <%= f.text_field :tag_list %>
-  </p>
-  <p>
-    <div><%= f.label :Corpo %></div><br />
-    <div ><%= f.text_area :body , :rows => 10, style: 'width:10px;',style: 'height:400px;' %></div>
+    <%= f.label :Texto %><br />
+    <%= f.cktext_area :body %>
   </p>
   <p>
     <%= f.submit "Enviar", :class=>"waves-effect waves-light btn" %>
   </p>
+
 <p>
   <% if @article.image.exists? %>
       <%= image_tag @article.image.url %><br/>
@@ -28,4 +29,5 @@
   <%= f.label :image, "Anexar imagem" %><br />
   <%= f.file_field :image %>
 </p>
+
 <% end %>
