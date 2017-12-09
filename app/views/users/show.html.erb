@@ -1,23 +1,23 @@
-<h1><%= @user.username %></h1>
+<ul >
+<% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path , :class => 'waves-effect waves-light btn'%><% end %>
+<%= link_to "<< Retornar para todos usuários:", users_path, :class => 'waves-effect waves-light btn' %>
+</ul><br/><br/>
 
-Nome: <%= @user.name %><br/>
+<h1 class="center"><%= @user.username %></h1></br>
+<p class="center"><%= image_tag(@user.avatar.url(:thumb)) %></p></br>
+<font size="5" >Nome: <%= @user.name %></fornt><br/>
 Email:  <%= @user.email %><br/>
-Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><% end %>
+Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><br/><% end %>
 
 <% @article = Article.all %>
 
 
-<h3>Artigos criados pelo usuário:</h3>
+<h3 class="center">Artigos criados pelo usuário:</h3>
 <% @article.each do |article| %>
 <% if @user.username == article.autor %>
-    <ul><li><%= link_to article.title, article_path(article),
+    <ul class="center"><li><%= link_to article.title, article_path(article),
     class: 'article_title', id: "article_#{article.id}" %>
     </li>
   <% end %></ul>
 <% end %>
 
-
-<p><% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %><% end %></p>
-
-
-<p><%= link_to "<< Retornar para todos usuários:", users_path %></p>

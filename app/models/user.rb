@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-has_many :articles
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,5 +23,9 @@ has_many :articles
         if User.where(email: username).exists?
      errors.add(:username, :invalid)
     end
+
 end
+has_many :articles, foreign_key: :author_id
+has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 end

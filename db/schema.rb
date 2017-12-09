@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208171528) do
+ActiveRecord::Schema.define(version: 20171209003155) do
 
 # Could not dump table "articles" because of following StandardError
 #   Unknown type 'String' for column 'autor'

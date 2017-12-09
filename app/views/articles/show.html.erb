@@ -7,33 +7,34 @@
 </p>
 
 <h1><%= @article.title %></h1>
-Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= @article.autor %>
+Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= link_to @article.autor,user_path(@article.autor) %>
 <p>
 
         Categorias:
         <% @article.tags.each do |tag| %>
-          <%= link_to tag.name, tag_path(tag) %>
+          <div class="chip"><fornt size="5"><%= link_to tag.name, tag_path(tag) %></fornt></div>
         <% end %>
 
 </p>
+
+<p class=" grey lighten-2"><%= @article.body %></p></br></br>
 <p>
  <% if @article.image.exists? %>
-<%= image_tag @article.image.url %>
+    <%= image_tag @article.image.url %>
 <% end %>
 </p>
-<p><%= @article.body %></p>
+
+<h3 >Comentários (<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments.reverse %></br></br>
 
 <p>
 <% if user_signed_in? %>
+            <h3>Postar comentário</h3>
             <%= render partial: 'comments/form' %></br></br>
             <% if current_user.username == @article.autor or current_user.admin? %>
-            <h3>Postar comentário</h3>
 <% else %>
 É necessário estar logado para comentar
             <% end %>
 <% end %>
 </p>
 
-
-<h3>Comentários (<%= @article.comments.size %>)</h3>
-<%= render partial: 'articles/comment', collection: @article.comments.reverse %>

@@ -17,7 +17,6 @@
             <ul class="right hide-on-med-and-down">
 
 
-            <%= link_to 'Sobre', sobres_path, :class => 'waves-effect waves-light btn'%>
             <%= link_to 'Categorias', categoria_path, :class => 'waves-effect waves-light btn'%>
             <% if user_signed_in? %>
               <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'waves-effect waves-light btn'  %><% end %>
@@ -45,13 +44,38 @@
 
 
         <div class="container">
-         <p class="navbar-text pull-right">
-                  </p>
+         <p class="navbar-text pull-right"></p>
+         <% if flash[:notice] %>
+          <p class="alert"><%= flash[:notice] %></p>
+          <% end %>
+          <% if flash[:alert] %>
+          <p class="alert"><%= flash[:alert] %></p>
+              <% end %></p>
             <%= yield %>
         <p class="flash"><%= flash.notice %></p>
         </div>
 
   </body>
+      <footer class="page-footer light-blue">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Contatos :</h5>
+                <p class="grey-text text-lighten-4">Emails: Joberth.rogers18@gmail.com /ebmm01@gmail.com
+</p>
+                <p class="grey-text text-lighten-4">Telefones: (61)3546-9347 / (XX)XXXXX-XXXX</p>
+              </div>
 
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © Portal Educa
+                        <ul class="right hide-on-med-and-down">
+                        <a class="grey-text text-lighten-4 right" href="#!"><%= link_to 'Sobre', sobres_path, :class => 'waves-effect waves-light btn'%></a>
+                          </ul >
+            </div>
+          </div>
+        </footer>
 
 </html>
