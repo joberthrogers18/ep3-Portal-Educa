@@ -1,12 +1,30 @@
+<%= link_to "<< Retornar", tags_path, :class => 'waves-effect waves-light btn' %>
+<%= link_to "Excluir", tag_path(@tag), method: :delete,data: {confirm: "Realmente deseja excluir essa categoria?"}, :class => 'waves-effect waves-light btn'%>
 
-<h1>Artigos com a categoria <%= @tag.name %></h1>
 
-<ul>
+</br></br></br></br>
+<h1 class="center">Artigos com a categoria <%= @tag.name %></h1></br></br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+
+
   <% @tag.articles.each do |article| %>
-    <li><%= link_to article.title, article_path(article) %></li>
+    <tr>
+              <hr width=60%> <li class="center"  ><font size="5">
+              <%= link_to article.title, article_path(article) %></font></li></hr>
+      </tr>
 
   <% end %>
 
-</ul>
-<%= link_to "<< Retornar", tags_path %>
-<%= link_to "Excluir", tag_path(@tag), method: :delete,data: {confirm: "Realmente deseja excluir essa categoria?"}%>
+</tbody>
+</table>
+
+</br></br></br></br></br></br></br></br></br></br></br></br>
+

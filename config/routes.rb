@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
+  resources :categoria
+  resources :sobres
   get 'users/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
