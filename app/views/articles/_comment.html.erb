@@ -1,7 +1,7 @@
 <div>
   <h4>Comentário por <%=link_to comment.author_name, user_path(comment.author_name) %></h4>
-  <p class="comment"><%= comment.body %></p>
-<p>Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</p>
+  <p class="comment"><%= raw comment.body %></p>
+
 
 <% if user_signed_in? %>
 <% if current_user.username == comment.author_name or current_user.admin? %>
