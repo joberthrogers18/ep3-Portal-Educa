@@ -1,5 +1,13 @@
 <h1><%= @article.title %></h1>
 Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= link_to @article.autor,user_path(@article.autor) %>
+
+<% if user_signed_in? %>
+<% if current_user.username == @article.autor or current_user.admin? %>| 
+<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%> | 
+<%= link_to "Editar", edit_article_path(@article) %>
+<% end %>
+<% end %>
+
 <p>
   Categorias:
   <% @article.tags.each do |tag| %>
@@ -11,8 +19,12 @@ Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= link_to @art
 <%= image_tag @article.image.url %>
 <% end %>
 </p>
-<p><%= @article.body %></p>
+<p><%= raw @article.body %></p>
 <%= link_to "<< Retornar ", articles_path %>
+
+<h3>Comentários (<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments.reverse %>
+
 <p>
 <% if user_signed_in? %>
 <h3>Postar comentário</h3>
@@ -21,14 +33,4 @@ Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= link_to @art
 É necessário estar logado para comentar
 <% end %>
 </p>
-<p>
-<% if user_signed_in? %>
-<% if current_user.username == @article.autor or current_user.admin? %>
-<%= link_to "Excluir", article_path(@article), method: :delete,data: {confirm: "Realmente deseja excluir esse artigo?"}%>
-<%= link_to "Editar", edit_article_path(@article) %>
-<% end %>
-<% end %>
-</p>
 
-<h3>Comentários (<%= @article.comments.size %>)</h3>
-<%= render partial: 'articles/comment', collection: @article.comments.reverse %>

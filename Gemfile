@@ -58,4 +58,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'paperclip'
 gem 'devise'
 gem 'rails_admin', '~> 1.2'
-
+gem 'ckeditor'
