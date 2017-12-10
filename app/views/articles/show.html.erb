@@ -16,17 +16,17 @@ Criado dia <%= @article.created_at.strftime("%d %b, %Y") %> por <%= link_to @art
 
         Categorias:
         <% @article.tags.each do |tag| %>
-          <div class="chip"><fornt size="5"><%= link_to tag.name, tag_path(tag) %></fornt></div>
+          <div class="chip"><fornt size="5"><%= link_to tag.name, tag_path(tag) %></font></div>
         <% end %>
 
 </p>
 
-<p class=" grey lighten-2"><%= @article.body %></p></br></br>
-<p>
+<div class=" grey lighten-2"><%= raw @article.body %></div></br></br>
+
  <% if @article.image.exists? %>
     <%= image_tag @article.image.url %>
 <% end %>
-</p>
+
 
 <h3>Comentários (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments.reverse %>

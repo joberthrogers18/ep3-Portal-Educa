@@ -21,7 +21,7 @@ flash.notice = "Article '#{@article.title}' created!"
     end
     def destroy
         @article = Article.find(params[:id]).destroy
-flash.notice = "Article '#{@article.title}' deleted!"
+        flash.notice = "Article '#{@article.title}' deleted!"
         redirect_to action: "index"
     end
     def edit
