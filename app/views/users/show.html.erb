@@ -7,7 +7,7 @@
 <p class="center"><%= image_tag(@user.avatar.url(:thumb)) %></p></br>
 <font size="5" >Nome: <%= @user.name %></fornt><br/>
 Email:  <%= @user.email %><br/>
-Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><br/><% end %>
+Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date.strftime("%d /%m/ %Y") %> <br/><br/><% end %>
 
 <% @article = Article.all %>
 

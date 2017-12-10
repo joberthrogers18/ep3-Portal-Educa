@@ -18,7 +18,21 @@
 
 
     <div><%= f.label :Data_de_nascimento %><br />
-        <%= f.date_select :date_of_birth %></div>
+   <%= f.text_field :date_of_birth, :class=>"datepicker" %></input></div>
+
+    <script type="text/javascript">
+
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+
+
+    </script>
 
   <p><%= f.label :Nome_de_usuário %><br />
     <%= f.text_field :username %></p>
@@ -62,4 +76,5 @@
 <div class="center"><%= button_to "excluir conta", registration_path(resource_name), data: { confirm: "Tem certeza? Essa ação não pode ser desfeita" }, method: :delete, :class=>"waves-effect waves-light btn" %></div>
 
 </br></br>
+
 
