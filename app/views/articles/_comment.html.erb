@@ -1,14 +1,19 @@
 <div>
-  <h4>Comentário por <%=link_to comment.author_name, user_path(comment.author_name) %></h4>
-  <p class="comment"><%= raw comment.body %></p>
-
-
-<% if user_signed_in? %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+         <div class="panel-title pull-left">
+             Comentário por <%=link_to comment.author_name, user_path(comment.author_name) %>
+         </div>
+        <div class="panel-title pull-right"><% if user_signed_in? %>
 <% if current_user.username == comment.author_name or current_user.admin? %>
 <%= link_to 'Excluir', [comment.article, comment],
                method: :delete,
-               data: { confirm: 'Tem certeza?' } %>
-<%= link_to 'Edit', edit_article_comment_path(@article, comment) %>
-<% end %><% end %>
-</p>
+               data: { confirm: 'Tem certeza?' } %> | 
+<%= link_to 'Editar', edit_article_comment_path(@article, comment) %>
+<% end %><% end %></div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body"><p><%= raw comment.body %></p>
+
+Postado dia <%= comment.created_at.strftime("%d %b, %Y") %>. <% if comment.updated_at != comment.created_at %> Ultima edição: <%= comment.updated_at.strftime("%d %b, %Y") %><% end %></div>
 </div>

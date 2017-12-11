@@ -63,5 +63,6 @@
 <div class="container"><p>
 <%= link_to "Retornar para todos usuários", users_path ,:class => 'btn btn-info' %>
 <% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'btn btn-info' %><% end %>
-
-</p></div
+<% if current_user.username != @user.username %><%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-info' %><% end %>
+ 
+</p></div>
