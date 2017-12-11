@@ -59,3 +59,6 @@ gem 'paperclip'
 gem 'devise'
 gem 'rails_admin', '~> 1.2'
 gem 'ckeditor'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

@@ -1,23 +1,67 @@
-<h1><%= @user.username %></h1>
-<p><%= image_tag(@user.avatar.url(:thumb)) %></p>
-Nome: <%= @user.name %><br/>
-Email:  <%= @user.email %><br/>
-Nascimento: <% if @user.date_of_birth != nil %><%= @user.date_of_birth.to_date %> <br/><% end %>
+<div class="container">
+<div class="page-header"> 
+
+ <div class="panel-title pull-left">
+             <h1><%= @user.username %> <small><% if @user.professor %> Professor <% else %> Aluno <% end %></small></h1>
+         </div>
+
+<div class="panel-title pull-right"><%= image_tag(@user.avatar.url(:thumb)) %></div>
+
+<div class="clearfix"></div>
+</div></div>
+
+<p></p>
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">Sobre o usuário:</div>
+  <div class="panel-body">
+    <div class="row">
+  <div class="col-sm-2">Nome:</div>
+  <div class="col-sm-2"><%= @user.name %></div>
+</div>
+<div class="row">
+  <div class="col-sm-1">Email:</div>
+  <div class="col-sm-2"><%= @user.email %></div>
+</div>
+<div class="row">
+  <div class="col-sm-1">Nascimento:</div>
+  <div class="col-sm-2"><% if @user.date_of_birth != nil %><%= @user.date_of_birth.strftime("%m/%d/%Y") %><% else %> Não informado<% end %></div>
+</div></div></div>
+</div>
+
+<div class="container">
+  <h2>Artigos criados pelo usuário:</h2>
 
 <% @article = Article.all %>
+<table class="table table-hover">
 
-
-<h3>Artigos criados pelo usuário:</h3>
+    <thead>
+      <tr>
+        <th>Artigo:</th>
+        <th>Criado em:</th>
+        <th>Atualizado em:</th>
+      </tr>
+    </thead>
+    <tbody>
 <% @article.each do |article| %>
 <% if @user.username == article.autor %>
-    <ul><li><%= link_to article.title, article_path(article),
-    class: 'article_title', id: "article_#{article.id}" %>
-    </li>
-  <% end %></ul>
+      <tr>
+        <td><%= link_to article.title, article_path(article),
+    class: 'article_title', id: "article_#{article.id}" %></td>
+    <td><%= article.created_at %></td>
+    <td><%= article.updated_at %></td>
+      </tr>
+
+       
+
+
+        <% end %>
 <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="container"><p>
+<%= link_to "Retornar para todos usuários", users_path ,:class => 'btn btn-info' %>
+<% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'btn btn-info' %><% end %>
 
-
-<p><% if current_user.username == @user.username %><%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %><% end %></p>
-
-
-<p><%= link_to "<< Retornar para todos usuários:", users_path %></p>
+</p></div
