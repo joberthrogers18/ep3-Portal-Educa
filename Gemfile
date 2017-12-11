@@ -62,3 +62,10 @@ gem 'ckeditor'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+
+gem "mailboxer"
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+gem 'gravatar_image_tag'
+gem 'chosen-rails'
+gem 'jquery-turbolinks'

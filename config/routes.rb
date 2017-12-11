@@ -1,6 +1,33 @@
 Rails.application.routes.draw do
+default_url_options :host => "localhost:3000"
   mount Ckeditor::Engine => '/ckeditor'
   get 'users/index'
+resources :conversations, only: [:index, :show, :destroy] do
+  member do
+    post :reply
+  end
+end
+
+resources :conversations, only: [:index, :show, :destroy] do
+  member do
+    post :mark_as_read
+  end
+end
+
+resources :conversations, only: [:index, :show, :destroy] do
+  member do
+    post :restore
+  end
+end
+
+resources :conversations, only: [:index, :show, :destroy] do
+  collection do
+    delete :empty_trash
+  end
+end 
+
+
+resources :messages, only: [:new, :create]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :path_prefix => 'd'

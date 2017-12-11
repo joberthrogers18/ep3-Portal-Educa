@@ -6,6 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
+
+acts_as_messageable
+def mailboxer_email(object)
+  email
+end
   attr_accessor :login
      def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
